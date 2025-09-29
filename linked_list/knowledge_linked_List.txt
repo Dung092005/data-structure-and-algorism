@@ -1,0 +1,15 @@
+1.) Đôi khi bạn có thể thắc mắc là tại sao phải khai báo poiter bằng Node* head = new node() mà không chỉ cần Node head = 
+cần gì phải poiter cho khó hiểu đúng không ? 
+
+--> câu trả lời trong máy tính nó chỉ thành stack và heap, stack kiểm soát biến cục bộ, tức là khi hết hàm là hết tất ấy
+và nó sẽ không linh hoạt, phải biết trước cần bao nhiêu node và khai báo với được, còn khi dùng new Node() hàm new
+sẽ cấp phát cho bạn 1 ô nhớ trong heap, tồn tại mãi mãi, chỉ có thể xóa đi, nó linh hoạt hơn rất nhiều, nhưng nếu bạn khai báo
+là Node thì nó chỉ hiểu là ở trong stack, vì vậy phải khai báo Node* head = new node() bây h head trong stack sẽ trỏ vào
+ô nhớ trong heap 
+
+2.) để ý khi insert thường hay có ** đúng không, vậy tại sao phải 2 poiter ? 
+
+--> để nó có thể thay đổi giá trị ngay cả khi ở ngoài hàm, nhưng tại sao phải 2 poiter trong khi chỉ cần 1 là đủ ? 
+đó là vì tham chiếu của các hàm luôn là ảo, muốn đồng nhất giá trị phải dùng poiter, khi 1 biến thường muốn đồng nhất 
+giá trị thì phải dùng 1 poiter, còn 1 poiter muốn đồng nhất thì phải dùng 2 lần poiter, 
+vd ở test.cpp 

@@ -1,0 +1,26 @@
+nhớ là struct là 1 kiểu dữ liệu, nó không hề được global hay j cả, nghĩa là khi m khai báo 1 biến struct ở hàm main thì khi
+mày nhập dữ liệu trong hàm khác thì nó chả thay đổi gì, vẫn dùng poiter để đồng nhất 
+vd; 
+void test(Stack *st) {
+    st->top = 99;
+}
+void test2(Stack st) {
+    st.top = 110;
+}
+
+int main() {
+    Stack s1;
+    s1.top = 0;
+    test(&s1);
+    test2(s1);
+    printf("%d\n", s1.top); // in ra 99 ✅
+}
+ở đây thì stack là struct khai báo trc
+
+Còn khi dùng linkest list mày sẽ thắc mắc là, rõ ràng ở main mày khai báo là poiter, nhưng trừ khi thay đổi head là dùng ** còn
+đâu chả bao h dùng tới **, chỉ dùng * là cùng vì nó đc khai báo ở main đk ?
+
+-->giải thích đó là ở stack thì s1 ở trên là 1 biến có kiểu struct nó căn bản chả khác j vs int, string.. vì thế muốn thay đổi 
+nó ở hàm thì phải làm tương tự vs kiểu bthg, còn ở linkest list, head chả phải là biến lưu giá trị, nó là con trỏ, trỏ tới
+Node đầu tiên, và mỗi node ở đó đều có địa chỉ của địa chỉ tiếp theo, vì vậy bạn có thể chỉ cần khai báo * bình thg là nó 
+đã thay đổi đồng nhất rồi 
